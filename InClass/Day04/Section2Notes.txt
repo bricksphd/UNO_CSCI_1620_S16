@@ -1,1 +1,36 @@
 Day 04 - January 21, 2016
+
+Inheritance:
+Diference between is-a and has-a.
+A pink fairy armadillo is a four-legged creature that has a shell
+General - > Specific
+A hedgehog is a four-legged creature that has blue spikes
+General - > Specific
+
+Is-a means inheritance
+Has-a means members and methods
+
+Inheritance:
+
+What to do if you want to extend:
+-Add the extends keyword
+-Add super() as the first line of constructor. Unless the superclass has a no parameter constructor.
+-Make everything thing in the superclass public or protected if it needs to be accesseod
+
+
+
+Definitions:
+-Superclass or base class. The class we inherit from.
+-Subclass is the class that inherits
+
+Rules:
+-Yes to multiple layers of inheritance
+-No multiple inheritance -> you can't extend more than one class
+
+
+
+Everything extends an object:
+-11 methods
+-toString() - a string representation of the object
+-equals() - True if the parameter is the same as the base
+-getClass() - gets the string representation of the class name
