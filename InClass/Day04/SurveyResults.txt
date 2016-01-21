@@ -1,0 +1,19 @@
+Consider the following code. What will the output be?
+
+public class Quickie {
+
+    public static void main(String[] args) {
+       
+        Integer j = new Integer(10);
+       
+        update(j);
+       
+        System.out.println(j);
+    }
+   
+    public static void update(Integer i)
+    {
+        i = new Integer(20);
+    }
+   
+}
