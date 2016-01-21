@@ -1,6 +1,6 @@
 public class Box{
     
-    private String myDescriptionClosed = "You find a gigantic box and you pull a string to open the box.  The box looks suspiciously like a school bus ran over a gold fish. Strange. I need to wake up soon.";
+    private String myDescriptionClosed = "You find a small box and you pull a string to open the box.  The box looks suspiciously like a school bus ran over a gold fish. Strange. I need to wake up soon.";
     
     private String myDescriptionOpen = "It looks the exact same and nothing in it but a noxious odor that smells like meatloaf.";
     
