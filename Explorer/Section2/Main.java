@@ -6,6 +6,16 @@ public class Main {
     
     public static boolean cont = true;
     
+    public static final String COLOR_RESET = "\u001B[0m";
+    public static final String COLOR_BLACK = "\u001B[30m";
+    public static final String COLOR_RED = "\u001B[31m";
+    public static final String COLOR_GREEN = "\u001B[32m";
+    public static final String COLOR_YELLOW = "\u001B[33m";
+    public static final String COLOR_BLUE = "\u001B[34m";
+    public static final String COLOR_PURPLE = "\u001B[35m";
+    public static final String COLOR_CYAN = "\u001B[36m";
+    public static final String COLOR_WHITE = "\u001B[37m";
+    
 	public static Me me;
 	
 	public static List<Object> everythingInTheRoom = new ArrayList<Object>();
@@ -16,7 +26,9 @@ public class Main {
 		
         everythingInTheRoom.add(new Around());
         everythingInTheRoom.add(new Shovel());
-		//everythingInTheRoom.add(me);
+        everythingInTheRoom.add(new Compass());
+
+        //everythingInTheRoom.add(me);
 		
 		//everythingInTheRoom.add(new Hammer());
         
@@ -31,7 +43,7 @@ public class Main {
 		System.out.println("Welcome to the explorer game.");
 		
         System.out.println();
-        System.out.println("------------------");
+        System.out.println(COLOR_WHITE + "------------------" + COLOR_RESET);
         System.out.println();
         
         describeScene();
@@ -40,7 +52,7 @@ public class Main {
 		do
 		{
             if(cont == true) {
-                System.out.println("--------**----------");
+                System.out.println(COLOR_WHITE + "------------------" + COLOR_RESET);
 						
                 promptInput();
 			
@@ -161,7 +173,7 @@ public class Main {
                         
 					} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 						// TODO Auto-generated catch block
-						//e.printStackTrace();
+						e.printStackTrace();
 					}
                     cont = true;
                     break;
@@ -181,8 +193,17 @@ public class Main {
 	private static void localParse(String string) {
 		switch (string){
 		case "shout":
-			shout();
-			break;
+                shout();
+                break;
+        case "look":
+                look();
+                break;
+        case "inv":
+                inv();
+                break;
+        case "inventory":
+                inv();
+                break;
 		default:
 			confused();
 			break;
@@ -190,7 +211,20 @@ public class Main {
 		
 	}
 
-
+    private static void inv() {
+        
+        if(Inventory.fullInv == "") {
+            System.out.println("You have " + COLOR_RED + "nothing" + COLOR_RESET + " in your inventory");
+        }
+        else {
+            System.out.print(COLOR_RED + Inventory.fullInv +COLOR_RESET);
+        }
+    }
+    
+    private static void look() {
+        System.out.println(Around.myDescription);
+    }
+    
 	private static void shout() {
 		System.out.println("Echo...echo...echo...");
 		
