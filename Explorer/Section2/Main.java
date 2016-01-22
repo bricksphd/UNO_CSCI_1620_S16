@@ -13,32 +13,38 @@ public class Main {
 		
 		me = new Me();
 		
-		
+        everythingInTheRoom.add(new Around());
+        everythingInTheRoom.add(new Shovel());
 		//everythingInTheRoom.add(me);
 		
 		//everythingInTheRoom.add(new Hammer());
         
-        everythingInTheRoom.add(new Alien());
+        //everythingInTheRoom.add(new Alien());
         
-        everythingInTheRoom.add(new Ship());
+        //everythingInTheRoom.add(new Ship());
         
-        everythingInTheRoom.add(new Box());
+        //everythingInTheRoom.add(new Box());
 		
 		boolean done = false;
 		
 		System.out.println("Welcome to the explorer game.");
 		
+        System.out.println();
+        System.out.println("------------------");
+        System.out.println();
+        
+        describeScene();
+        
+        
 		do
 		{
-			System.out.println();
 			System.out.println("------------------");
-			System.out.println();
-			
-			describeScene();
-			
+						
 			promptInput();
 			
 			String input = getLine();
+            
+            System.out.println();
 			
 			done = respondToInput(input);
 			
@@ -101,11 +107,13 @@ public class Main {
 	
 	private static void confused()
 	{
-		System.out.println("Sorry, that was super confusing.  Try again.");
+		System.out.println("I don't understand what you want to do. Please Try again.");
 	}
 	
 	private static void parse(String input)
 	{
+        boolean cont = true;
+        
 		String[] splits = input.split(" ");
 		if(splits.length == 1)
 		{
@@ -134,21 +142,19 @@ public class Main {
 			
 			Method[] methods = directObject.getClass().getMethods();
 			
-			for(Method method : methods)
-			{
-				if(method.getName().equalsIgnoreCase(verbString))
-				{
-					try {
-						String s = (String)method.invoke(directObject, new Object[]{});
-						System.out.println(s);
-					} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+            for(Method method : methods)
+            {
+                if(method.getName().equalsIgnoreCase(verbString))
+                {
+                    try {
+                        String s = (String)method.invoke(directObject, new Object[]{});
+                        System.out.println(s);
+                    } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-			}
-			
-			
+                        e.printStackTrace();
+                    }
+                }
+            }
 		}
 		else
 			confused();
