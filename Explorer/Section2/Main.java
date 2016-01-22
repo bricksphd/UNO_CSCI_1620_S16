@@ -3,13 +3,14 @@ import java.util.*;
 
 
 public class Main {
-	
+    
+    public static boolean cont = true;
+    
 	public static Me me;
 	
 	public static List<Object> everythingInTheRoom = new ArrayList<Object>();
 
 	public static void main(String[] args) {
-		
 		
 		me = new Me();
 		
@@ -38,15 +39,20 @@ public class Main {
         
 		do
 		{
-			System.out.println("------------------");
+            if(cont == true) {
+                System.out.println("--------**----------");
 						
-			promptInput();
+                promptInput();
 			
-			String input = getLine();
+                String input = getLine();
             
-            System.out.println();
+                System.out.println();
 			
-			done = respondToInput(input);
+                done = respondToInput(input);
+            }
+            else {
+                confused();
+            }
 			
 		}while(!done);
 
@@ -86,6 +92,10 @@ public class Main {
 			break;
 		default:
 			parse(input);
+                if(cont == false) {
+                    confused();
+                    cont = true;
+                }
 			break;			
 		}
 		return done;
@@ -112,8 +122,6 @@ public class Main {
 	
 	private static void parse(String input)
 	{
-        boolean cont = true;
-        
 		String[] splits = input.split(" ");
 		if(splits.length == 1)
 		{
@@ -142,19 +150,28 @@ public class Main {
 			
 			Method[] methods = directObject.getClass().getMethods();
 			
-            for(Method method : methods)
-            {
-                if(method.getName().equalsIgnoreCase(verbString))
-                {
-                    try {
+			for(Method method : methods)
+			{
+				if(method.getName().equalsIgnoreCase(verbString))
+				{
+					try {
                         String s = (String)method.invoke(directObject, new Object[]{});
-                        System.out.println(s);
-                    } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+						System.out.println(s);
+                        cont = true;
+                        
+					} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 						// TODO Auto-generated catch block
-                        e.printStackTrace();
-                    }
+						//e.printStackTrace();
+					}
+                    cont = true;
+                    break;
+				}
+                else {
+                    cont = false;
                 }
-            }
+			}
+			
+			
 		}
 		else
 			confused();
