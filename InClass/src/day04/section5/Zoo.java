@@ -1,7 +1,7 @@
 /*
  * Copyright Brian Ricks, PhD, 2016. bricks at unomaha.edu
  */
-package day04.base;
+package day04.section5;
 
 public class Zoo {
     
@@ -9,7 +9,12 @@ public class Zoo {
     {
         ///Instantiate the animals we have at our zoo
         Lion leo = new Lion("Leo");
+        Butterfly butterfly = new Butterfly("Bobby");
+        Capybara capybara = new Capybara("Jim");
         
+        System.out.println(leo.getClass().getName());
+        
+        System.out.println(leo.toString());
         
         ///Print a welcome message
         System.out.println("Welcome to the zoo program.");
@@ -19,6 +24,8 @@ public class Zoo {
         System.out.println("There sure are a lot of animals here. Let's take a look at what we have...");
         
         System.out.println(leo.getName());
+        System.out.println(butterfly.getName());
+        System.out.println(capybara.getName());
         
         
         ///Tell about how the animals move about
@@ -26,6 +33,8 @@ public class Zoo {
         System.out.println("That was fun. Now let's talk about how these animals move about.");
         
         System.out.println(leo.getMovement());
+        System.out.println(butterfly.getMovement());
+        System.out.println(capybara.getMovement());
         
         
         ///Tell about where the animals live
@@ -33,6 +42,8 @@ public class Zoo {
         System.out.println("You won't find all these animals in your backyard. Let me tell you where you can find them.");
         
         System.out.println(leo.getHabitat());
+        System.out.println(butterfly.getHabitat());
+        System.out.println(capybara.getHabitat());
         
         System.out.println();
         System.out.println("Now I know you're all curious about these animals will eat. Well, I'll tell you...");

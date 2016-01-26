@@ -3,7 +3,7 @@
  */
 package day04.base.old;
 
-import day04.base.Lion;
+import day04.section5.Lion;
 import day04.base.old.Bird;
 
 public class Zoo {

@@ -2,7 +2,7 @@
  * Copyright Brian Ricks, PhD, 2016. bricks at unomaha.edu
  */
 
-package day04.base;
+package day04.section2;
 
 /**
 /* The class Lion

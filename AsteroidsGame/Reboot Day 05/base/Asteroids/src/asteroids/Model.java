@@ -179,14 +179,14 @@ public class Model implements IMVCModel, KeyListener {
          ///Indicate to our views that we've changed
         updated();
         
-       while(Lock.locked)
+       /*while(Lock.locked)
        {
             try {
                 Thread.sleep(10);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Model.class.getName()).log(Level.SEVERE, null, ex);
             }
-       }
+       }*/
 
         ///Call this same method again after a little bit of time
         new Timer().schedule(new TimerTask(){public void run(){tick(.02f);}}, 1000/50);
