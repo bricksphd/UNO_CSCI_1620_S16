@@ -5,7 +5,7 @@ import java.util.*;
 public class Main {
     
     public static boolean cont = true;
-    
+
     public static final String COLOR_RESET = "\u001B[0m";
     public static final String COLOR_BLACK = "\u001B[30m";
     public static final String COLOR_RED = "\u001B[31m";
@@ -16,12 +16,31 @@ public class Main {
     public static final String COLOR_CYAN = "\u001B[36m";
     public static final String COLOR_WHITE = "\u001B[37m";
     
+    public static int directionValue = 51;
+    public static String directionName;
 	public static Me me;
 	
 	public static List<Object> everythingInTheRoom = new ArrayList<Object>();
 
 	public static void main(String[] args) {
-		
+            
+            for(int x = 0; x < 100; x++) {
+                GrabOrDrop.itemGrabbed[x] = false;
+                Location.numItemsInArea[x] = 0;
+                Location.nameItemsInArea[x] = "";
+            }
+            
+            Around.myDescription = "You find yourself at the end of a dirt road. ";
+            Around.myDirection2 = "east";
+            Around.myPickUps2 = COLOR_RED + "-shovel\n" + COLOR_RESET;
+            GrabOrDrop.itemLocation[1] = 51;
+            //GrabOrDrop.itemName[1] = COLOR_RED + "-shovel\n" + COLOR_RESET;
+            Location.nameItemsInArea[51] = COLOR_RED + "-shovel\n" + COLOR_RESET;
+            Location.numItemsInArea[51] = 1;
+            
+            GrabOrDrop.itemNumber = 1;
+            GrabOrDrop.itemName[1] = COLOR_RED + "-shovel\n" + COLOR_RESET;
+
 		me = new Me();
 		
         everythingInTheRoom.add(new Around());
@@ -30,7 +49,7 @@ public class Main {
 
         //everythingInTheRoom.add(me);
 		
-		//everythingInTheRoom.add(new Hammer());
+        //everythingInTheRoom.add(new Hammer());
         
         //everythingInTheRoom.add(new Alien());
         
@@ -76,12 +95,12 @@ public class Main {
 		{
 			Method method;
 			try {
-				method = o.getClass().getMethod("description", null);
+				method = o.getClass().getMethod("description", (Class<?>[]) null);
 				
 				if(method != null)
 				{
 					String s = (String)method.invoke(o, new Object[]{});
-					System.out.println(s);
+					System.out.print(s);
 				}
 				
 			} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
@@ -90,6 +109,7 @@ public class Main {
 			}
 			
 		}
+                System.out.println("\n");
 		
 	}
 
@@ -102,13 +122,34 @@ public class Main {
 			done = true;
 			System.out.println("OK, if you'd rather do something else....");
 			break;
+                case "n":
+                case "go n":
+                case "go north":
+                    goDirection('n');
+                    break;
+                case "e":
+                case "go e":
+                case "go east":
+                    goDirection('e');
+                    break;
+                case "s":
+                case "go s":
+                case "go south":
+                    goDirection('s');
+                    break;
+                case "w":
+                case "go w":
+                case "go west":
+                    goDirection('w');
+                    break;
+                      
 		default:
-			parse(input);
-                if(cont == false) {
-                    confused();
-                    cont = true;
-                }
-			break;			
+                    parse(input);
+                    if(cont == false) {
+                        confused();
+                        cont = true;
+                    }
+                    break;			
 		}
 		return done;
 	}
@@ -191,42 +232,60 @@ public class Main {
 
 
 	private static void localParse(String string) {
-		switch (string){
-		case "shout":
-                shout();
-                break;
-        case "look":
-                look();
-                break;
-        case "inv":
-                inv();
-                break;
-        case "inventory":
-                inv();
-                break;
-		default:
-			confused();
-			break;
-		}
+            switch (string){
+                case "shout":
+                    shout();
+                    break;
+                case "look":
+                    System.out.println(Around.look());
+                    break;
+                case "inv":
+                    System.out.print(Inventory.fullInv);
+                    break;
+                case "inventory":
+                    System.out.print(Inventory.fullInv);
+                    break;
+                case "dig":
+                    System.out.print(Shovel.dig());
+                    break;
+                default:
+                    confused();
+                    break;
+            }
 		
 	}
+    
+    private static void shout() {
+            System.out.println("Echo...echo...echo...");
 
-    private static void inv() {
+            // TODO Auto-generated method stub
+
+    }
+    
+    private static void goDirection(char direction) {
+        switch (direction) {
+            case 'n':
+                directionValue = -10;
+                directionName = "north";
+                break;
+            case 'e':
+                directionValue = 1;
+                directionName = "east";
+                break;
+            case 's':
+                directionValue = 10;
+                directionName = "south";
+                break;
+            case 'w':
+                directionValue = -1;
+                directionName = "west";
+                break;
+            default:
+                break;
+        }
         
-    
-        System.out.print(Inventory.fullInv);
+        Location.going();
     }
-    
-    private static void look() {
-        System.out.println(Around.myDescription);
-    }
-    
-	private static void shout() {
-		System.out.println("Echo...echo...echo...");
-		
-		// TODO Auto-generated method stub
-		
-	}
 	
 
 }

@@ -10,8 +10,8 @@ public class Inventory {
     public static final String COLOR_CYAN = "\u001B[36m";
     public static final String COLOR_WHITE = "\u001B[37m";
     
-    public static String fullInv = COLOR_BLUE + "Compass\n";
-    
-    public static String invShovel = COLOR_RED + "Shovel\n";
+    public static String fullInv = "Your inventory includes:\n" + COLOR_BLUE + "-compass\n";
+
+    public static String invShovel = COLOR_RED + "-shovel\n";
     
 }
