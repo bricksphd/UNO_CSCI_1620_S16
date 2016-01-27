@@ -1,0 +1,56 @@
+Day 04 - January 21, 2016
+
+Inheritance:
+
+Definitons:
+-Superclass or base class. It's what you inherit from
+-Subclass. A class that inherits from a superclass.
+
+Movement:
+-Less coding time
+-Less code
+-Easier to debug
+-Easier to understand
+-Reusability
+
+General - > Specific
+
+Is-a v. Has-a
+
+Animal (General) -> Lion (Specific)
+
+Lion "Is-a" Animal that "Has-a" mane.
+
+Is-a means inheritance (extends)
+Has-a means members
+
+Tesla Model S
+-Steerwheels Has-a
+-Tires Has-a
+-Car Is-a
+
+Rules
+-Yes we can have multiple layers of inheritance
+-No, we can't have multiple inheritance (extending more than one class)
+
+
+You have been using inheritance
+
+You can also override.
+-The signature of the method has to be identical
+
+Methods we'll use in this class
+-toString() - Get the string representation of an object
+-equals(Object) - Return true if the classes are "equal"
+-getClass() - An object that tells us about the class
+
+
+
+
+
+
+
+
+
+
+
