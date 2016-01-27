@@ -1,0 +1,44 @@
+@Javadoc
+-All block comments
+-Starsts with a double *, i.e. /**
+-Self documenting
+-You generate it with javadoc command
+
+Inheritance 2.0
+
+You should always instantiate members in the superclass in the superclass.
+
+How to access members in a superclass:
+-Make them public
+-Use getters and setters
+-Make them protected
+--"public" to subclasses
+--"public" to other classes in the same package
+
+super.X()
+-tells Java to call method X in the superclass first
+
+@Override
+-Java annotation (that's fancy speak for meta-data)
+-It does not change how the code behaves
+-It just a help for programmers
+-Standard practice
+
+Polymorphism
+-it means we treat subclasses of different types as if they were all the supertype.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
