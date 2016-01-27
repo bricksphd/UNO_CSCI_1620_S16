@@ -4,7 +4,7 @@ package asteroids;
 /**
  * A class representing a asteroid.
  */
-public class Asteroid extends SpaceItems{
+public class Asteroid extends SpaceThing{
 	
 	/** The radius of all asteroids. */
 	public static final float RADIUS = 1;

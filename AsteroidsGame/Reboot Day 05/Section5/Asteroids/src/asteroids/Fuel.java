@@ -1,7 +1,6 @@
 package asteroids;
 
-public class Fuel extends SpaceItems{
-    private int gallonsOfFuel;
+public class Fuel extends SpaceThing{
     
     public static float radius;
     
@@ -15,12 +14,12 @@ public class Fuel extends SpaceItems{
     
     public Fuel()
     {
-        gallonsOfFuel = 50;
         
         radius = .5f;
         
         setLocation(new Point(Helper.getRandomBetweenOneAndOne() * STARTING_RANGE, STARTING_Y + radius));
 	
     }
+    
     
 }

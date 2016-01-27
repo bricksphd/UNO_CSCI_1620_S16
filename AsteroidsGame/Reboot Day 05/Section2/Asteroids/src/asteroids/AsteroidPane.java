@@ -135,7 +135,7 @@ public class AsteroidPane extends JComponent implements IMVCView {
         g.setColor(Color.GRAY);
         
         ///Draw each asteroid
-        for(SpaceItems asteroid : model.getSpaceItems())
+        for(Asteroid asteroid : model.getAsteroids())
         {
             ///Grab the asteroid's location
             float cx = asteroid.getLocation().x;
@@ -146,7 +146,17 @@ public class AsteroidPane extends JComponent implements IMVCView {
             
         }
         
-        
+        ///Now draw the fuel
+        g.setColor(Color.RED);
+        for(Fuel fuel : model.getFuels())
+        {
+            ///Grab the asteroid's location
+            float cx = fuel.getLocation().x;
+            float cy = fuel.getLocation().y;
+            
+            ///Fill a circle at that location
+            g.fill(new Ellipse2D.Float(cx - Fuel.radius, cy - Fuel.radius, Fuel.radius * 2, Fuel.radius * 2));
+        }
         ///Now drow the ship
         
         ///Set the ship color
@@ -183,7 +193,7 @@ public class AsteroidPane extends JComponent implements IMVCView {
         {
             g.setColor(Color.RED);
             
-            g.drawString("You dead. Ouch!", 300, 300);
+            g.drawString("You Died. Ouch!", 300, 300);
         }
         
         if(model.getFramesInState() < Model.FADING_FRAMES)

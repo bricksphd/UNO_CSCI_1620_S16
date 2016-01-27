@@ -25,10 +25,12 @@ public class Model implements IMVCModel, KeyListener {
     /** The asteroid speed. */
     private final float ASTEROID_SPEED = 5;
 
-    /** The space items. */
-    private List<SpaceItems> spaceItems = new ArrayList<SpaceItems>();
+    /** The asteroids. */
+    private List<Asteroid> asteroids = new ArrayList<Asteroid>();
 
-   
+    /** The fuel. **/
+    private List<Fuel> fuels = new ArrayList<Fuel>();
+
     /** The mvc model. */
     private MVCModel mvcModel = new MVCModel();
 
@@ -79,7 +81,7 @@ public class Model implements IMVCModel, KeyListener {
     {
             ship = new Ship();
 
-            spaceItems.clear();
+            asteroids.clear();
 
             score = 0;
 
@@ -104,8 +106,8 @@ public class Model implements IMVCModel, KeyListener {
      *
      * @return the asteroids
      */
-    public List<SpaceItems> getSpaceItems() {
-            return spaceItems;
+    public List<Asteroid> getAsteroids() {
+            return asteroids;
     }
 
     /**
@@ -131,8 +133,8 @@ public class Model implements IMVCModel, KeyListener {
      *
      * @param asteroids the asteroids to set
      */
-    public void setSpaceItems(List<SpaceItems> asteroids) {
-            this.spaceItems = asteroids;
+    public void setAsteroids(List<Asteroid> asteroids) {
+            this.asteroids = asteroids;
     }
 
     /**
@@ -208,44 +210,54 @@ public class Model implements IMVCModel, KeyListener {
         {
         
             ///Update the position of each asteroid.
-            for(SpaceItems spaceItem : spaceItems)
+            for(Asteroid asteroid : asteroids)
             {
-                spaceItem.move(0, -time * ASTEROID_SPEED);
+                asteroid.move(0, -time * ASTEROID_SPEED);
 
                 ///We are trying to see if the radii of the asteroid and the ship sum to a number greater than their distance..
-                float asteroidRadius = SpaceItems.RADIUS;
+                float asteroidRadius = Asteroid.RADIUS;
                 float shipRadius = Ship.RADIUS;
                 float radiusSum = asteroidRadius + shipRadius;
 
-                float xDiff = spaceItem.getLocation().x - ship.getLocation().x;
-                float yDiff = spaceItem.getLocation().y - ship.getLocation().y;
+                float xDiff = asteroid.getLocation().x - ship.getLocation().x;
+                float yDiff = asteroid.getLocation().y - ship.getLocation().y;
                 float distance = (float)Math.sqrt(xDiff * xDiff + yDiff * yDiff);
 
                 if(radiusSum >= distance)
-                {
-                    if(spaceItem instanceof Asteroid)
-                        endGame();
-                    else
-                        pickUpFuel();
-                }
+                    endGame();
             }
 
-            
+            for(Fuel fuel : fuels)
+            {
+                fuel.move(0, -time * ASTEROID_SPEED * 3);
+
+                ///We are trying to see if the radii of the asteroid and the ship sum to a number greater than their distance..
+                float fuelRadius = Fuel.radius;
+                float shipRadius = Ship.RADIUS;
+                float radiusSum = fuelRadius + shipRadius;
+
+                float xDiff = fuel.getLocation().x - ship.getLocation().x;
+                float yDiff = fuel.getLocation().y - ship.getLocation().y;
+                float distance = (float)Math.sqrt(xDiff * xDiff + yDiff * yDiff);
+
+                if(radiusSum >= distance)
+                    pickUpFuel();
+            }
 
 
             ///Remove asteroids if they've hit the bottom
-            spaceItems.removeIf(a->a.getLocation().y < -Asteroid.RADIUS);
+            asteroids.removeIf(a->a.getLocation().y < -Asteroid.RADIUS);
 
             ///Spawn new asteroids
             if(Math.random() < .05)
             {
-                spaceItems.add(new Asteroid());
+                asteroids.add(new Asteroid());
             }
 
             ///Spawn new fuel
             if(Math.random() < .02)
             {
-                spaceItems.add(new Fuel());
+                fuels.add(new Fuel());
             }
         }
         
@@ -263,7 +275,10 @@ public class Model implements IMVCModel, KeyListener {
         score += 1;
     }
     
-    
+    public List<Fuel> getFuels()
+    {
+        return fuels;
+    }
 
     /**
      * Checks if is right key down.

@@ -3,11 +3,9 @@ package asteroids;
 /**
  * The Class Ship.
  */
-public class Ship {
+public class Ship extends SpaceItems{
 	
-    /** The location of the ship. */
-    private Point location = new Point(0, 1);
-
+   
     /** The radius of the ship. */
     public static final float RADIUS = 1;
 
@@ -18,37 +16,18 @@ public class Ship {
     {
 
     }
+    
+    public void moves(float x, float y) 
+    {
+        super.move(x,y);
+                
+                
+        if(location.x > 5)
+            location.x = 5;
+        if(location.x < -5)
+            location.x = -5;
 
-    /**
-     * Gets the location of the ship.
-     *
-     * @return the location of the ship
-     */
-    public Point getLocation() {
-            return location;
     }
 
-    /**
-     * Sets the location of the ship.
-     *
-     * @param location the new location of the ship
-     */
-    public void setLocation(Point location) {
-            this.location = location;
-    }
-
-    /**
-     * Move the ship.
-     *
-     * @param x the amount to move the ship in x
-     * @param y the amount to move the ship in y
-     */
-    public void move(float x, float y) {
-            location.update(location.x + x, location.y + y);
-
-            if(location.x < -5)
-                location.x = -5;
-            if(location.x > 5)
-                location.x = 5;
-    }
+    
 }
