@@ -10,7 +10,3 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
-/InClass/nbproject/private/
-/InClass/build/
-/AsteroidsGame/Reboot Day 05/base/Asteroids/nbproject/private/
-/AsteroidsGame/Reboot Day 05/base/Asteroids/build/
