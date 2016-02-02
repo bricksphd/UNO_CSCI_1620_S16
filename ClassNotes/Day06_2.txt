@@ -1,1 +1,67 @@
 
+Polymorphism:
+
+The goal is to programe as general as possible.
+
+Polymorphism
+Superclass variable = new Subclass();
+Animal animal = new Lion();
+
+The compiler treats the variable as if it were the superclass.
+The jre (java) treats the reference as it's lowest subtype.
+
+public class Player
+{
+  protected String name;
+  
+  /** The getter */
+  public String getName()
+  {
+    return name;
+  }
+  
+  /** The setter */
+  public void setName(String inName)
+  {
+    name = inName;
+  }
+}
+
+public class Curry extends Player
+{
+  public Curry()
+  {
+    name = "Curry"
+  }
+  
+  public String myStrengths()
+  {
+    return "He shoots threes like Jimmer.";
+  }
+  
+  public String getName()
+  {
+    return "Curry";
+  }
+}
+
+Player aPlayer = new Curry();
+
+instanceof
+
+The compiler doesn't care about instanceof
+The compiler does care about () casting.
+
+if(aPlayer instanceof Curry)
+{
+  Curry curry = (Curry)aPlayer;
+  System.out.println(curry.getStrengths());
+  }
+}
+
+
+
+So, you can't call aPlayer.myStringths();
+But, at run time, the jre will the subclcass methods.
+
+

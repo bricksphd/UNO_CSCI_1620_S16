@@ -1,1 +1,19 @@
+Polymorphism:
+
+Program as general as possible.
+
+VideoGame myVideoGame = new LeaugeOfLegends();
+
+The compiler treats myVideoGame as a type VideoGame.
+The jre (java runtime) treats myVideoGame as a type LeagueOfLegends();
+
+Superclass variable = new Subclass();
+
+VideoGame[] MarksGames = new VideoGame[]{new LeagueOfLegends(), new HearthStone()};
+
+instanceof
+
+a instanceof B
+evaluates to true if a is an intstance of type B
+false othewise
 
