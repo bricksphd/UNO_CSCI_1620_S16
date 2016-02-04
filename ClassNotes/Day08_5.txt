@@ -1,2 +1,65 @@
 Day 8, Section 5
 Abstract classes and Interfaces
+
+The keyword for a class you can't instantiate is 
+abstract
+
+public abstract class Car
+public abstract class Animal
+
+
+The real power comes from abstract methods
+An abstract method is one that has no implementation in the abstract class
+But must be implemented in the subclass.
+public abstract void method();
+
+
+An abstract class can extend an abstract class
+
+A "concrete class" is not abstract
+An "abstract class" is abstract
+
+
+Something that is entirely abstract is...
+interface
+
+interface is a keyword that replaces class
+
+
+
+Classes extend classes
+Classes implement interfaces
+Interfaces extend other interfaces
+
+A class can implemented any number of interfaces
+
+
+So the syntax is:
+
+class A extends B
+class A implements C
+class A extends B implements C
+class A extensd B implements C,D,...
+class A implements C,D,...
+class A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
