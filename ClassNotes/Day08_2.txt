@@ -1,3 +1,75 @@
 Day 8, Section 2
 Abstract classes and interfaces
 
+keyword: abstract.
+
+
+
+If a class is abstract:
+-You CANNOT instantiate it.
+-Can have unimplemented abstract methods
+--The abstract class can call these methods.
+-You can have references of abstract types
+
+
+
+How to create an abstract class:
+-Add the keyword abstract between access modifier and class keyword
+--public abstract class Name
+-Everything else is the same
+--I can have data members
+--I can have methods
+--And I can have unimplemented abstract methods
+
+Super cool
+Abstract classes can extend abstract classes
+And they don't have to implement the abstract methods
+
+Example:
+public abstract class Character
+{
+  public abstract void LevelUp();
+}
+
+public abstract class Tank extends Character
+{
+  public abstract void DefenseAbility();
+}
+
+public class DonaldDuck extends Tank
+{
+   public void LevelUp()
+   {
+   }
+   
+   public void DefenseAbility()
+   {
+   }
+}
+
+
+If I have a class that is all abstract
+-No member data
+-All abstract methods
+
+The keyword is interface
+The keyword interface replaces class
+
+An class implements an interface
+A class extends another class
+
+A type is generic word for
+-A class
+-An interface
+-An enumeration
+
+
+An interface can extend an interface
+
+A class can implement multiple interfaces!!!!!!
+You write implements X, Y, Z
+
+A reference can by of an interface type.
+
+
+
